@@ -42,9 +42,10 @@ $headers = 'From: noreply@githubrandomcodereview.com' . "\r\n" .
 for ($i = $from; $i >= 0; $i--) {
     if (0 === $i % $config['commits_interval']) {
         $author = $commits[$i]['author']['login'];
-        $url = $commits[$i]['url'];
         $sha = $commits[$i]['sha'];
+        $url = 'https://github.com/'.$config['repository']['user'].'/'.$config['repository']['repo'].'/commit/'.$sha;
         $reviewer = getRandomReviewerEmail($author);
+
         if (true === mail($reviewer, "[GithubRandomCodeReview] Please review $author's commit!", $url, $headers)) {
             $db->set('sha', $sha);
             $hist = array('author' => $author, 'reviewer' => $reviewer, 'commit' => $url);
