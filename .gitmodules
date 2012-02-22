@@ -1,0 +1,3 @@
+[submodule "lib/GithubApi_v3"]
+	path = lib/GithubApi_v3
+	url = git@github.com:guillaumepotier/GithubApi_v3.git

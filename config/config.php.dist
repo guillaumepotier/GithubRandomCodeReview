@@ -1,0 +1,21 @@
+<?php
+
+return array(
+    'commits_interval' => 5,
+    'username' => yourusernamehere,
+    'password' => yourpasswordhere,
+    'repository' => array(
+        'user' => user,
+        'repo' => repo,
+    ),
+    'reviewers' => array(
+        array(
+            'username'  => 'johndoe',
+            'email'     => 'john@doe.com',
+        ),
+        array(
+            'username'  => 'janedoe',
+            'email'     => 'jane@doe.com',
+        ),
+    ),
+);
