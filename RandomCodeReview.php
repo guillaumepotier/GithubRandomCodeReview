@@ -43,10 +43,11 @@ for ($i = $from; $i >= 0; $i--) {
     if (0 === $i % $config['commits_interval']) {
         $author = $commits[$i]['author']['login'];
         $sha = $commits[$i]['sha'];
+        $message = $commits[$i]['message'];
         $url = 'https://github.com/'.$config['repository']['user'].'/'.$config['repository']['repo'].'/commit/'.$sha;
         $reviewer = getRandomReviewerEmail($author);
 
-        if (true === mail($reviewer, "[GithubRandomCodeReview] Please review $author's commit!", $url, $headers)) {
+        if (true === mail($reviewer, "[GithubRandomCodeReview] Please review $author's commit: '$message'", $url, $headers)) {
             $db->set('sha', $sha);
             $hist = array('author' => $author, 'reviewer' => $reviewer, 'commit' => $url);
             echo "\n" . json_encode($hist);
